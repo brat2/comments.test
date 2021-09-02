@@ -47,24 +47,24 @@ $(function () {
             });
     });
 
-    $("#filtr").on("input", function () {
+    $("#filter").on("input", function () {
         var enter = $(this).val();
         if (enter.length >= 3) {
             $.ajax({
                 type: "GET",
-                url: "/filtr",
+                url: "/filter",
                 data: "enter=" + enter,
                 success: function (data) {
-                    $("#list").empty();
+                    $("#select").empty();
                     $(data).each(function (i) {
-                        $("#list").append("<option>" + data[i] + "</option>");
+                        $("#select").append("<option>" + data[i] + "</option>");
                         if (enter === data[i]) {
-                            $("#list").empty();
+                            $("#select").empty();
                             
                         }
                     });
                 },
             });
-        } else $("#list").empty();
+        } else $("#select").empty();
     });
 });

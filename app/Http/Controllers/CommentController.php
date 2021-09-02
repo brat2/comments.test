@@ -18,16 +18,17 @@ class CommentController extends Controller
 
     public function index()
     {
-        $comments = Comment::with('user')->get();
-
+        $comments = Comment::with('user')->take(3)->get();
         return view('blog-single', ['data' => $comments]);
     }
-    public function filtr(Request $req):array
+
+    public function filter(Request $req): array
     {
-        $data= [];
         $enter = $req->get('enter');
-        $data = ['kultura', 'admin'];
-       // $data = Comment::with('user')->get('login');
+        $data = Comment::with('user')->join('users', 'users.id', '=', 'comments.user_id')->pluck('login');
+        $data = array_unique($data->toArray());
+        $data = array_values($data);
+
         return $data;
     }
 }

@@ -104,8 +104,8 @@
                         </p>
 
                         <div class="comments-wrapper">
-                            <input type="text" name="filtr" id="filtr" list="list">
-                            <datalist id="list">
+                            <input type="text" name="filter" id="filter" list="select">
+                            <datalist id="select">
                             </datalist>
 
                             @if(count($data) > 0)

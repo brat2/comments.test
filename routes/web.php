@@ -16,7 +16,7 @@ use App\Http\Controllers\CommentController;
 
 Route::get('/', [CommentController::class, 'index'])->name('home');
 
-Route::get('/filtr', [CommentController::class, 'filtr'])->name('filtr');
+Route::get('/filter', [CommentController::class, 'filter'])->name('filter');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
