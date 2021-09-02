@@ -60,11 +60,28 @@ $(function () {
                         $("#select").append("<option>" + data[i] + "</option>");
                         if (enter === data[i]) {
                             $("#select").empty();
-                            
                         }
                     });
                 },
             });
         } else $("#select").empty();
+    });
+
+    $("#more").on("click", function () {
+        var count = $("#comments-list li").size();
+        $.ajax({
+            type: "GET",
+            url: "/more/" + count,
+            success: function (data) {
+                $(data).each(function (i) {
+                    $("#comments-list").append(
+                        "<li><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'>" + data[i].user.login +
+                            "</h6></div><div class='comment-content'>" +
+                            data[i].message +
+                            "</div></div></li>"
+                    );
+                });
+            },
+        });
     });
 });

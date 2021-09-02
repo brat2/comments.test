@@ -22,6 +22,12 @@ class CommentController extends Controller
         return view('blog-single', ['data' => $comments]);
     }
 
+    public function more(int $skip = 0): array
+    {
+        $comments = Comment::with('user')->skip($skip)->take(3)->get();
+        return $comments->toArray();
+    }
+
     public function filter(Request $req): array
     {
         $enter = $req->get('enter');

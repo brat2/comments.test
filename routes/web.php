@@ -15,7 +15,7 @@ use App\Http\Controllers\CommentController;
 */
 
 Route::get('/', [CommentController::class, 'index'])->name('home');
-
+Route::get('/more/{skip?}', [CommentController::class, 'more'])->name('more');
 Route::get('/filter', [CommentController::class, 'filter'])->name('filter');
 
 Route::get('/dashboard', function () {
@@ -24,4 +24,4 @@ Route::get('/dashboard', function () {
 
 Route::post('/', [CommentController::class, 'store'])->middleware(['auth'])->name('addComment');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

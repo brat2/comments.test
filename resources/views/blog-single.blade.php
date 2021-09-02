@@ -112,25 +112,22 @@
                             <ul id="comments-list" class="comments-list">
                                 @foreach($data as $comment)
                                 <li>
-                                    <div class="comment-main-level">
-
-                                        <!-- Contenedor del Comentario -->
-                                        <div class="comment-box">
-                                            <div class="comment-head">
-                                                <h6 class="comment-name by-author">{{$comment->user->login}}</h6>
+                                    <div class="comment-box">
+                                        <div class="comment-head">
+                                            <h6 class="comment-name by-author">{{$comment->user->login}}</h6>
 
 
-                                            </div>
-                                            <div class="comment-content">
-                                                {{$comment->message}}
-                                            </div>
+                                        </div>
+                                        <div class="comment-content">
+                                            {{$comment->message}}
                                         </div>
                                     </div>
+
 
                                 </li>
                                 @endforeach
                             </ul>
-                            <div class="text-center pb-5"><button type="button" class="btn btn-primary btn-sm">Ещё комментарии</button></div>
+                            <div class="text-center pb-5"><button id="more" type="button" class="btn btn-primary btn-sm">Ещё комментарии</button></div>
                             @else
                             <h4>Будьте первым, оставьте комментарий</h4>
                             @endif
