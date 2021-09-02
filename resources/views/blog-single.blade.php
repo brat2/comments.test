@@ -104,6 +104,9 @@
                         </p>
 
                         <div class="comments-wrapper">
+                            <input type="text" name="filtr" id="filtr" list="list">
+                            <datalist id="list">
+                            </datalist>
 
                             @if(count($data) > 0)
                             <ul id="comments-list" class="comments-list">
@@ -164,7 +167,7 @@
 
 
     <!-- jQuery Lib -->
-    <script src="blog/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="blog/js/vendor/bootstrap.min.js"></script>
     <!-- Tether JS -->

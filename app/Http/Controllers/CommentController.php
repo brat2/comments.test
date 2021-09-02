@@ -8,13 +8,12 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    public function store(Request $req)
-    { 
+    public function store(Request $req): void
+    {
         Comment::create([
             'message' => $req->input('message'),
             'user_id' => Auth::user()->id
         ]);
-        return redirect()->route('home');
     }
 
     public function index()
@@ -22,5 +21,13 @@ class CommentController extends Controller
         $comments = Comment::with('user')->get();
 
         return view('blog-single', ['data' => $comments]);
+    }
+    public function filtr(Request $req):array
+    {
+        $data= [];
+        $enter = $req->get('enter');
+        $data = ['kultura', 'admin'];
+       // $data = Comment::with('user')->get('login');
+        return $data;
     }
 }
