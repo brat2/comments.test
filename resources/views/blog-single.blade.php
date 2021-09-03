@@ -16,39 +16,16 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="blog/img/favicon.png">
 
-    <!-- Font Awesome Icons CSS -->
-    <link rel="stylesheet" href="blog/css/font-awesome.min.css">
-    <!-- Themify Icons CSS -->
-    <link rel="stylesheet" href="blog/css/themify-icons.css">
-    <!-- Elegant Font Icons CSS -->
-    <link rel="stylesheet" href="blog/css/elegant-font-icons.css">
-    <!-- Elegant Line Icons CSS -->
-    <link rel="stylesheet" href="blog/css/elegant-line-icons.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="blog/css/bootstrap.min.css">
-    <!-- Venobox CSS -->
-    <link rel="stylesheet" href="blog/css/venobox/venobox.css">
-    <!-- OWL-Carousel CSS -->
-    <link rel="stylesheet" href="blog/css/owl.carousel.css">
-    <!-- Slick Nav CSS -->
-    <link rel="stylesheet" href="blog/css/slicknav.min.css">
     <!-- Css Animation CSS -->
     <link rel="stylesheet" href="blog/css/css-animation.min.css">
-    <!-- Nivo Slider CSS -->
-    <link rel="stylesheet" href="blog/css/nivo-slider.css">
     <!-- Main CSS -->
     <link rel="stylesheet" href="blog/css/main.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="blog/css/responsive.css">
 
-    <script src="blog/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
 
 <body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
     <div class="site-preloader-wrap">
         <div class="spinner"></div>
     </div><!-- Preloader -->
@@ -166,32 +143,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="blog/js/vendor/bootstrap.min.js"></script>
-    <!-- Tether JS -->
-    <script src="blog/js/vendor/tether.min.js"></script>
-    <!-- Imagesloaded JS -->
-    <script src="blog/js/vendor/imagesloaded.pkgd.min.js"></script>
-    <!-- OWL-Carousel JS -->
-    <script src="blog/js/vendor/owl.carousel.min.js"></script>
-    <!-- isotope JS -->
-    <script src="blog/js/vendor/jquery.isotope.v3.0.2.js"></script>
-    <!-- Smooth Scroll JS -->
-    <script src="blog/js/vendor/smooth-scroll.min.js"></script>
-    <!-- venobox JS -->
-    <script src="blog/js/vendor/venobox.min.js"></script>
-    <!-- ajaxchimp JS -->
-    <script src="blog/js/vendor/jquery.ajaxchimp.min.js"></script>
-    <!-- Counterup JS -->
-    <script src="blog/js/vendor/jquery.counterup.min.js"></script>
-    <!-- waypoints js -->
-    <script src="blog/js/vendor/jquery.waypoints.v2.0.3.min.js"></script>
-    <!-- Slick Nav JS -->
-    <script src="blog/js/vendor/jquery.slicknav.min.js"></script>
-    <!-- Nivo Slider JS -->
-    <script src="blog/js/vendor/jquery.nivo.slider.pack.js"></script>
-    <!-- Letter Animation JS -->
-    <script src="blog/js/vendor/letteranimation.min.js"></script>
-    <!-- Wow JS -->
-    <script src="blog/js/vendor/wow.min.js"></script>
     <!-- Contact JS -->
     <script src="blog/js/contact.js"></script>
     <!-- Main JS -->

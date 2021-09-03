@@ -21,7 +21,7 @@ class CommentRepository implements CommentRepositoryInterface
     return $comments->toArray();
   }
 
-  public function add(Request $req)
+  public function add(Request $req):void
   {
     Comment::create([
       'message' => $req->input('message'),
