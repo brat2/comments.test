@@ -104,22 +104,21 @@
                         </p>
 
                         <div class="comments-wrapper">
+                            @if(count($data) > 0)
+                            <label for="filter">Отфильтровать: </label>
                             <input type="text" name="filter" id="filter" list="select">
                             <datalist id="select">
                             </datalist>
-
-                            @if(count($data) > 0)
                             <ul id="comments-list" class="comments-list">
+
                                 @foreach($data as $comment)
                                 <li>
                                     <div class="comment-box">
                                         <div class="comment-head">
-                                            <h6 class="comment-name by-author">{{$comment->user->login}}</h6>
-
-
+                                            <h6 class="comment-name by-author">{{$comment['user']['login']}}</h6>
                                         </div>
                                         <div class="comment-content">
-                                            {{$comment->message}}
+                                            {!!nl2br($comment['message'])!!}
                                         </div>
                                     </div>
 
@@ -127,7 +126,7 @@
                                 </li>
                                 @endforeach
                             </ul>
-                            <div class="text-center pb-5"><button id="more" type="button" class="btn btn-primary btn-sm">Ещё комментарии</button></div>
+                            <div class="text-center pb-5"><button id="more" type="button" class="btn btn-primary btn-sm"> Показать ещё</button></div>
                             @else
                             <h4>Будьте первым, оставьте комментарий</h4>
                             @endif

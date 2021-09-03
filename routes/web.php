@@ -14,14 +14,12 @@ use App\Http\Controllers\CommentController;
 |
 */
 
-Route::get('/', [CommentController::class, 'index'])->name('home');
-Route::get('/more/{skip?}', [CommentController::class, 'more'])->name('more');
-Route::get('/filter', [CommentController::class, 'filter'])->name('filter');
+Route::get('/', [CommentController::class, 'index']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/get', [CommentController::class, 'get']);
 
-Route::post('/', [CommentController::class, 'store'])->middleware(['auth'])->name('addComment');
+Route::get('/filter', [CommentController::class, 'filter']);
+
+Route::post('/', [CommentController::class, 'add'])->middleware(['auth'])->name('addComment');
 
 require __DIR__ . '/auth.php';

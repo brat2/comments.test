@@ -2,39 +2,40 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Repositories\Interfaces\CommentRepositoryInterface;
 
 class CommentController extends Controller
 {
-    public function store(Request $req): void
+    private $commentRepository;
+
+    public function __construct(CommentRepositoryInterface $CommentRepository)
     {
-        Comment::create([
-            'message' => $req->input('message'),
-            'user_id' => Auth::user()->id
-        ]);
+        $this->commentRepository = $CommentRepository;
     }
 
     public function index()
     {
-        $comments = Comment::with('user')->take(3)->get();
-        return view('blog-single', ['data' => $comments]);
+        $data = $this->commentRepository->get(0, 3);
+        return view('blog-single', ['data' => $data]);
     }
 
-    public function more(int $skip = 0): array
-    {
-        $comments = Comment::with('user')->skip($skip)->take(3)->get();
-        return $comments->toArray();
-    }
-
-    public function filter(Request $req): array
-    {
-        $enter = $req->get('enter');
-        $data = Comment::with('user')->join('users', 'users.id', '=', 'comments.user_id')->pluck('login');
-        $data = array_unique($data->toArray());
-        $data = array_values($data);
-
+    public function get(Request $req): array
+    { 
+        $data = $this->commentRepository->get($req->skip, $req->take, $req->author);
         return $data;
     }
+
+    public function add(Request $req)
+    {
+        $this->commentRepository->add($req);
+    }
+
+
+    public function filter(): array
+    {
+        $data = $this->commentRepository->getAuthor();
+        return $data;
+    }
+
 }

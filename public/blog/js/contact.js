@@ -1,51 +1,65 @@
 $(function () {
-    // Get the form.
     var form = $("#ajax_form");
-
-    // Get the messages div.
     var formMessages = $("#form-messages");
-
-    // Set up an event listener for the contact form.
-    $(form).submit(function (event) {
-        // Stop the browser from submitting the form.
+    $(form).on("submit", function (event) {
         event.preventDefault();
-
-        // Serialize the form data.
         var formData = $(form).serialize();
-        // Submit the form using AJAX.
         $.ajax({
             type: "POST",
             url: $(form).attr("action"),
             data: formData,
         })
             .done(function (response) {
-                // Make sure that the formMessages div has the 'success' class.
                 $(formMessages).removeClass("alert-danger");
                 $(formMessages).addClass("alert-success");
-
-                // Set the message text.
                 $(formMessages).text("Ваш комментарий успешно добавлен");
-
-                // Clear the form.
                 $("#name").val("");
                 $("#email").val("");
                 $("#message").val("");
+                getData("get", "all");
             })
             .fail(function (data) {
-                // Make sure that the formMessages div has the 'error' class.
                 $(formMessages).removeClass("alert-success");
                 $(formMessages).addClass("alert-danger");
 
-                // Set the message text.
-                if (data.responseText !== "") {
-                    $(formMessages).text(data.responseText);
-                } else {
-                    $(formMessages).text(
-                        "Oops! An error occured and your message could not be sent."
-                    );
-                }
+                $(formMessages).text("Oops! Произошла какая-то ошибка!");
             });
     });
+
+    /////////////////////////////////////////////////
+
+    function getData(url, flug = null) {
+        var count = $("#comments-list li").size();
+        var limit = 3;
+        if (flug == "all") {
+            limit = count;
+            count = 0;
+        }
+        var author = $("#filter").val();
+        $.ajax({
+            type: "GET",
+            url: url,
+            data: {
+                skip: count,
+                take: limit,
+                author: author,
+            },
+            success: function (data) {
+                if (flug == "all") $("#comments-list").empty();
+                $(data).each(function (i) {
+                    $("#comments-list").append(
+                        "<li><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'>" +
+                            data[i].user.login +
+                            "</h6></div><div class='comment-content'>" +
+                            data[i].message.replace(/\n+/g, "<br>") +
+                            "</div></div></li>"
+                    );
+                });
+            },
+        });
+    }
+
+    /////////////////////////////////////////////////
 
     $("#filter").on("input", function () {
         var enter = $(this).val();
@@ -60,6 +74,8 @@ $(function () {
                         $("#select").append("<option>" + data[i] + "</option>");
                         if (enter === data[i]) {
                             $("#select").empty();
+                            getData("get", "all");
+                            return false;
                         }
                     });
                 },
@@ -68,20 +84,6 @@ $(function () {
     });
 
     $("#more").on("click", function () {
-        var count = $("#comments-list li").size();
-        $.ajax({
-            type: "GET",
-            url: "/more/" + count,
-            success: function (data) {
-                $(data).each(function (i) {
-                    $("#comments-list").append(
-                        "<li><div class='comment-box'><div class='comment-head'><h6 class='comment-name by-author'>" + data[i].user.login +
-                            "</h6></div><div class='comment-content'>" +
-                            data[i].message +
-                            "</div></div></li>"
-                    );
-                });
-            },
-        });
+        getData("get");
     });
 });
