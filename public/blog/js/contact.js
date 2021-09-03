@@ -81,6 +81,7 @@ $(function () {
                 },
             });
         } else $("#select").empty();
+        if (enter.length === 0) getData("get", "all");
     });
 
     $("#more").on("click", function () {

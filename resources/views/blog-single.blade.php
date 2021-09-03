@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="DynamicLayers">
 
-    <title>Charitify || NGO/Charity/Fundraising Template</title>
+    <title>Тестовое задание</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="blog/img/favicon.png">
 
@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="blog/css/css-animation.min.css">
     <!-- Main CSS -->
     <link rel="stylesheet" href="blog/css/main.css">
-
 </head>
 
 <body>
